@@ -1,0 +1,53 @@
+<%= form_with(model: @book, local: true) do |form| %>
+  <% if @book&.errors&.full_messages&.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% @book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 mt-4 row">
+    <div class="col-sm-1 col-form-label">
+      <strong><%= form.label :name %></strong>
+    </div>
+
+    <div class="col-sm-9">
+      <%= form.text_field :name, autocomplete: "Name", class: 'form-control form-control-lg'  %>
+    </div>
+  </div>
+  <br>
+
+  <div class="mb-3 row">
+    <div class="col-sm-1 col-form-label">
+      <strong><%= form.label :author %></strong>
+    </div>
+
+    <div class="col-sm-9">
+      <%= form.text_field :author, autocomplete: "Author", class: 'form-control form-control-lg'  %>
+    </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <% if @book.image.attached? %>
+      <%= image_tag @book.image, style: "width: 200px; display: block " %>
+    <% end %>
+    <div class="mb-3 row">
+      <div class="col-sm-1 col-form-label">
+        <strong><%= form.label :image %></strong>
+      </div>
+
+      <div class="col-sm-9">
+        <%= form.file_field :image, autocomplete: "Image", class: 'form-control form-control-lg  shadow-lg bg-body rounded '  %>
+      </div>
+    </div>
+    <br>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-dark mb-3' %>
+  </div>
+<% end %>

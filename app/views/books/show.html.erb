@@ -1,0 +1,16 @@
+<div class="show">
+  <h2><strong><%= @book.name %></strong></h2>
+  <h5><strong>Author:</strong> <%= @book.author %></h5>
+  <% if @book.image.attached? %>
+    <h5><strong>Image:</strong></h5>
+    <div class="img-block">
+      <% if @book.image.variable? %>
+        <%= image_tag @book.image, class: 'img' %>
+      <% else %>
+        <%= link_to(image_tag("book.svg",
+                              class: 'card-img-top card-image img')) %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to 'Back', books_path, class: 'btn btn-dark mt-2' %>
+</div>

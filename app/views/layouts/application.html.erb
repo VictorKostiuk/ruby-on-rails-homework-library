@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Library</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <nav>
+    <div class="logo"></div>
+
+    <ul>
+      <li>
+        <form class="input-group" action="/search">
+          <input type="search" name="q" class="search form-control rounded" placeholder="Search" aria-label="Search"/>
+          <button type="submit" class="btn btn-outline-success">Search</button>
+        </form>
+      </li>
+      <li><%= link_to 'Home', root_path, class: 'a' %></li>
+      <li><%= link_to 'Books', books_path, class: 'a' %></li>
+      <% if user_signed_in? %>
+        <li><%= button_to "Sign out", destroy_user_session_path,
+                          method: :delete, class: 'link a', data: { confirm: "Are you sure?" } %></li>
+      <% else %>
+        <li><%= link_to "Sign Up", new_user_registration_path, class: 'a' %></li>
+        <li><%= link_to "Log in", new_user_session_path, class: 'a' %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <header>
+    <div class="headline">
+      <div class="inner">
+        <h1><b>Welcome</b></h1>
+        <p>Scroll down the page</p>
+      </div>
+    </div>
+  </header>
+  <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+  <body>
+  <section>
+    <%= yield %>
+  </section>
+  </body>
+</html>
