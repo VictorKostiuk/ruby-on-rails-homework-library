@@ -13,17 +13,13 @@
         <h5 class="card-title"><%= book.name %></h5>
         <p class="card-text"><%= truncate strip_tags(book.author), length: 150 %></p>
         <%= link_to 'Show', book_path(book) %>
-          <% if book.status == 'in_stock' %>
-            <%= button_to 'Order', update_status_book_path(book, status: :ordered), method: :patch, class: 'link-1' %>
-          <% elsif book.status == 'ordered' %>
-            <p>Book was ordered</p>
-          <% elsif book.status == 'rented' %>
-            <p>Book was rented</p>
-          <% end %>
+        <% if book.status == 'ordered' %>
+          <%= button_to 'Rent', update_status_book_path(book, status: :rented), method: :patch, class: 'link-1' %>
+          <%= button_to 'Reject', update_status_book_path(book, status: :in_stock), method: :patch, class: 'link-1' %>
+      <% end %>
       </div>
     </div>
   <% end %>
 </div>
-<br>
 
-<%= link_to 'New book', new_book_path, class: 'btn btn-dark' %>
+

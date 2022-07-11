@@ -1,8 +1,17 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[show edit update destroy]
+  before_action :set_book, only: %i[show edit update update_status destroy]
 
   def index
     @books = Book.all
+  end
+
+  def orders
+    @books = Book.where(status: 'ordered')
+  end
+
+  def update_status
+    @book.update(status: params[:status])
+    redirect_to @book
   end
 
   def search
@@ -42,7 +51,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:name, :author, :image)
+    params.require(:book).permit(:name, :author, :image, :status)
   end
 
   def set_book

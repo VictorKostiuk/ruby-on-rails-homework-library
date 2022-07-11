@@ -1,6 +1,7 @@
 <div class="show">
   <h2><strong><%= @book.name %></strong></h2>
   <h5><strong>Author:</strong> <%= @book.author %></h5>
+  <h5><strong>Status:</strong> <%= @book.status %></h5>
   <% if @book.image.attached? %>
     <h5><strong>Image:</strong></h5>
     <div class="img-block">

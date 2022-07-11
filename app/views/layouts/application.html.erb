@@ -21,6 +21,9 @@
       </li>
       <li><%= link_to 'Home', root_path, class: 'a' %></li>
       <li><%= link_to 'Books', books_path, class: 'a' %></li>
+      <% if user_signed_in? && current_user.role == 'librarian' %>
+      <li><%= link_to 'Orders', orders_path, class: 'a' %></li>
+      <% end %>
       <% if user_signed_in? %>
         <li><%= button_to "Sign out", destroy_user_session_path,
                           method: :delete, class: 'link a', data: { confirm: "Are you sure?" } %></li>
