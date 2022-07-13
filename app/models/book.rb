@@ -3,6 +3,7 @@ class Book < ApplicationRecord
   validates :author, presence: true
   belongs_to :user, optional: true
   has_many :orders
+  has_many :comments, as: :commentable
   has_one_attached :image, dependent: :destroy
   STATUSES = [:ready_for_order, :ordered, :applied]
 end

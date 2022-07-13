@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   get '/search', to: 'books#search'
   get '/orders', to: 'books#orders'
   resources :books do
+    resources :comments
     member do
       patch :update_status
     end
+  end
+  resources :comments do
+    resources :comments
   end
 end
