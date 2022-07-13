@@ -1,1 +1,6 @@
-<h1 class="title"><b>TOP-10 Best books</b></h1>
+<h1 class="title"><b>Best books</b></h1>
+
+<% @books.each do |book| %>
+  <%= book.name %>
+  <%= Order.all.where(book_id: book.id).count %>
+<% end %>

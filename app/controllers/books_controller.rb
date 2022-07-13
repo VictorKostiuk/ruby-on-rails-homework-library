@@ -7,10 +7,14 @@ class BooksController < ApplicationController
 
   def orders
     @books = Book.where(status: 'ordered')
+    @applied_books = Book.where(status: 'applied')
   end
 
   def update_status
     @book.update(status: params[:status])
+    if @book.status == 'ordered'
+      @order = Order.create(book_id: @book.id)
+    end
     redirect_to @book
   end
 
@@ -50,11 +54,13 @@ class BooksController < ApplicationController
 
   private
 
-  def book_params
-    params.require(:book).permit(:name, :author, :image, :status)
-  end
-
   def set_book
     @book = Book.find params[:id]
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:name, :author, :image, :status)
   end
 end

@@ -14,9 +14,32 @@
         <p class="card-text"><%= truncate strip_tags(book.author), length: 150 %></p>
         <%= link_to 'Show', book_path(book) %>
         <% if book.status == 'ordered' %>
-          <%= button_to 'Rent', update_status_book_path(book, status: :rented), method: :patch, class: 'link-1' %>
-          <%= button_to 'Reject', update_status_book_path(book, status: :in_stock), method: :patch, class: 'link-1' %>
+          <%= button_to 'Apply', update_status_book_path(book, status: :applied), method: :patch, class: 'link-1' %>
+          <%= button_to 'Reject', update_status_book_path(book, status: :ready_for_order), method: :patch, class: 'link-1' %>
       <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h1>Applied books</h1>
+
+<div class="books row">
+  <% @applied_books.each do |book| %>
+    <div class="card mx-5 mt-5 col-md-4" style="width: 18rem;">
+      <% if book.image.attached? %>
+        <%= image_tag book.image, class: "card-img-top" %>
+      <% else %>
+        <%= link_to(image_tag("book.svg",
+                              class: 'card-img-top')) %>
+      <% end %>
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= book.name %></h5>
+        <p class="card-text"><%= truncate strip_tags(book.author), length: 150 %></p>
+        <%= link_to 'Show', book_path(book) %>
+        <% if book.status == 'applied' %>
+          <%= button_to 'Return', update_status_book_path(book, status: :ready_for_order), method: :patch, class: 'link-1' %>
+        <% end %>
       </div>
     </div>
   <% end %>

@@ -9,7 +9,12 @@
       <h5 class="card-title"><%= book.name %></h5>
       <p class="card-text"><%= truncate strip_tags(book.author), length: 150 %></p>
       <%= link_to 'Show', book_path(book) %>
-      <%= link_to 'Order' %>
-    </div>
+      <% if book.status == 'ready_for_order' %>
+        <%= button_to 'Order', update_status_book_path(book, status: :ordered), method: :patch, class: 'link-1' %>
+      <% elsif book.status == 'ordered' %>
+        <p>Book was ordered</p>
+      <% elsif book.status == 'applied' %>
+        <p>Book was applied</p>
+      <% end %>    </div>
   </div>
 <br>
