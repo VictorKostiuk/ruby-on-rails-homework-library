@@ -1,0 +1,40 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions:
+    rubocop-rails: true
+    rubocop-rspec: true
+  Lint:
+    AmbiguousAssignment: true # new in 1.7
+    AmbiguousOperatorPrecedence: true # new in 1.21
+    AmbiguousRange: true # new in 1.19
+    ConstantOverwrittenInRescue: true # new in 1.31
+    DeprecatedConstants: true # new in 1.8
+    DuplicateBranch: true # new in 1.3
+    DuplicateRegexpCharacterClassElement: true # new in 1.1
+    EmptyBlock: true # new in 1.1
+    EmptyClass: true # new in 1.3
+    EmptyInPattern: true # new in 1.16
+    IncompatibleIoSelectWithFiberScheduler: true # new in 1.21
+    LambdaWithoutLiteralBlock: true # new in 1.8
+    NoReturnInBeginEndBlocks: true # new in 1.2
+    NonAtomicFileOperation: true # new in 1.31
+    NumberedParameterAssignment: true # new in 1.9
+    OrAssignmentToConstant: true # new in 1.9
+    RedundantDirGlobSort: true # new in 1.8
+    RefinementImportMethods: true # new in 1.27
+    RequireRangeParentheses: true # new in 1.32
+    RequireRelativeSelfPath: true # new in 1.22
+    SymbolConversion: true # new in 1.9
+    ToEnumArguments: true # new in 1.1
+    TripleQuotes: true # new in 1.9
+    UnexpectedBlockArity: true # new in 1.5
+    UnmodifiedReduceAccumulator: true # new in 1.1
+    UselessRuby2Keywords: true # new in 1.23
+  DebuggerMethods:
+    MyDebugger:
+      MyDebugger.debug_this
+  Rails:
+    UniqBeforePluck: true
+    FindEach: true

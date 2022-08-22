@@ -1,0 +1,12 @@
+fix: true               # default: false
+parallel: true          # default: false
+format: progress        # default: Standard::Formatter
+ruby_version: 3.0.1     # default: RUBY_VERSION
+default_ignores: false  # default: true
+
+ignore:                 # default: []
+  - 'config/**'
+  - 'db/schema.rb'
+  - 'vendor/**/*'
+  - 'test/**/*':
+      - Layout/AlignHash

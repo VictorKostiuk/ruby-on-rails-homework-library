@@ -1,5 +1,6 @@
-class CommentsController < ApplicationController
+# frozen_string_literal: true
 
+class CommentsController < ApplicationController
   before_action :find_commentable
 
   def new
@@ -10,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new comment_params
 
     if @comment.save
-      redirect_back(fallback_location: root_path, notice: 'Your comment was successfully posted!')
+      redirect_back(fallback_location: root_path, notice: "Your comment was successfully posted!")
     else
       redirect_back(fallback_location: root_path, notice: "Your comment wasn't posted!")
     end

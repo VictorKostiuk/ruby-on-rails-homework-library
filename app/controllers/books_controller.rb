@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update update_status destroy]
 
@@ -6,29 +8,29 @@ class BooksController < ApplicationController
   end
 
   def orders
-    @books = Book.where(status: 'ordered')
-    @applied_books = Book.where(status: 'applied')
+    @books = Book.where(status: "ordered")
+    @applied_books = Book.where(status: "applied")
   end
 
   def update_status
     @book.update(status: params[:status])
-    if @book.status == 'ordered'
-      @order = Order.create(book_id: @book.id)
-    end
+    @order = Order.create(book_id: @book.id) if @book.status == "ordered"
     redirect_to @book
   end
 
   def search
-    @books = Book.where("name LIKE ?", "%" + params[:q] + "%")
+    @books = Book.where("name LIKE ?", "%#{params[:q]}%")
   end
 
   def new
     @book = Book.new
   end
 
-  def edit; end
+  def edit
+  end
 
-  def show; end
+  def show
+  end
 
   def create
     @book = Book.new book_params
@@ -57,8 +59,6 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find params[:id]
   end
-
-  private
 
   def book_params
     params.require(:book).permit(:name, :author, :image, :status)

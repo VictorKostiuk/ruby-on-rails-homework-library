@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -25,12 +27,17 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem "awesome_print"
 gem "jbuilder"
 
+gem "rubocop"
+gem "rubocop-rails"
+gem "rubocop-rspec"
+
 # Use Redis adapter to run Action Cable in production
+gem "bootstrap", "~> 5.1.3"
+gem "devise"
 gem "redis", "~> 4.0"
-gem 'devise'
-gem 'bootstrap', '~> 5.1.3'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -38,7 +45,7 @@ gem 'bootstrap', '~> 5.1.3'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -50,8 +57,11 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "database_cleaner"
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "factory_bot"
+  gem "rspec"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -69,7 +79,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "shoulda-matchers", "~> 5.0"
   gem "webdrivers"
 end
 
-gem 'pry'
+gem "pry"
+gem "standard", group: [:development, :test]
