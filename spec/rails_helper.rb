@@ -9,6 +9,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 
 require "rspec/rails"
 require "capybara"
+require "vcr"
 require "database_cleaner"
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -26,6 +27,13 @@ require "database_cleaner"
 # require only the support files necessary.
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/support/vcr_cassettes'
+  c.hook_into :webhook
+  C.configure_rspec_metadata!
+  C.ignore_localhost = true
+end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
