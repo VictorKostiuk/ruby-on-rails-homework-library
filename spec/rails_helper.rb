@@ -11,6 +11,9 @@ require "rspec/rails"
 require "capybara"
 require "vcr"
 require "database_cleaner"
+require 'faraday'
+require 'faraday/net_http'
+Faraday.default_adapter = :net_http
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -30,10 +33,11 @@ ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/support/vcr_cassettes'
-  c.hook_into :webhook
-  C.configure_rspec_metadata!
-  C.ignore_localhost = true
+  c.configure_rspec_metadata!
+  c.ignore_localhost = true
 end
+
+
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
