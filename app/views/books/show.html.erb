@@ -22,6 +22,7 @@
 
 <%= form_for [@book, Comment.new] do |f| %>
   <%= f.text_area :body, placeholder: "Add a comment", class: "form-control" %><br/>
+  <%= f.text_field :all_tags, placeholder: "Tags separated with comma" %><br/>
   <%= f.submit "Add Comment", class: 'btn btn-dark' %>
 <% end %>
 

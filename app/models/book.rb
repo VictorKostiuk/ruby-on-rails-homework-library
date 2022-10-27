@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
+  include Newest
   validates :name, presence: true
   validates :author, presence: true
   belongs_to :user, optional: true

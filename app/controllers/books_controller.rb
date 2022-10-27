@@ -5,6 +5,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @new = Book.newest
   end
 
   def orders
@@ -26,11 +27,9 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   def create
     @book = Book.new book_params

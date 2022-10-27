@@ -65,6 +65,8 @@
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.11.0, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.8.1, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v6.2.1, RVM: ruby-3.0.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v2.5.2, RVM: ruby-3.0.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.0.0, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.5, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.0.0, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hashdiff (v1.0.1, RVM: ruby-3.0.1) [gem]" level="application" />
@@ -121,6 +123,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.15.2, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v2.12.1, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.11.0, RVM: ruby-3.0.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby2_keywords (v0.0.5, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sassc (v2.4.0, RVM: ruby-3.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, RVM: ruby-3.0.1) [gem]" level="application" />
