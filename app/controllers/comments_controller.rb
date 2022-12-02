@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :all_tags)
+    params.require(:comment).permit(:body)
   end
 
   def find_commentable

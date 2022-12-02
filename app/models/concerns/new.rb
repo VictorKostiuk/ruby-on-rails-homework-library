@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Newest
+module New
   extend ActiveSupport::Concern
 
   included do

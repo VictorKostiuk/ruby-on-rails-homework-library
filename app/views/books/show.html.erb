@@ -2,6 +2,15 @@
   <h2><strong><%= @book.name %></strong></h2>
   <h5><strong>Author:</strong> <%= @book.author %></h5>
   <h5><strong>Status:</strong> <%= @book.status %></h5>
+  <h5><strong>topics:</strong>
+    <% if @book.topics.length != 0 %>
+      <% @book.topics.each do |topic|%>
+      <%= topic.title %>
+      <% end %>
+    <% else %>
+      There are no topics yet
+    <% end %>
+  </h5>
   <% if @book.image.attached? %>
     <h5><strong>Image:</strong></h5>
     <div class="img-block">
@@ -22,7 +31,6 @@
 
 <%= form_for [@book, Comment.new] do |f| %>
   <%= f.text_area :body, placeholder: "Add a comment", class: "form-control" %><br/>
-  <%= f.text_field :all_tags, placeholder: "Tags separated with comma" %><br/>
   <%= f.submit "Add Comment", class: 'btn btn-dark' %>
 <% end %>
 

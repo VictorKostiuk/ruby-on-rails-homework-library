@@ -31,6 +31,17 @@
   </div>
   <br>
 
+  <div class="mb-3 row">
+    <div class="col-sm-1 col-form-label">
+      <strong><%= form.label :topic_ids %></strong>
+    </div>
+
+    <div class="col-sm-9">
+      <%= form.collection_select :topic_ids, Topic.all, :id, :title, { include_blank: 'Not selected' }, {:multiple => true, class: 'form-control form-control'}  %>
+    </div>
+  </div>
+  <br>
+
   <div class="form-group">
     <% if @book.image.attached? %>
       <%= image_tag @book.image, style: "width: 200px; display: block " %>
@@ -49,5 +60,6 @@
 
   <div class="actions">
     <%= form.submit class: 'btn btn-dark mb-3' %>
+    <%= link_to "Create topic", new_topic_path, class: 'btn btn-dark mb-3' %>
   </div>
 <% end %>

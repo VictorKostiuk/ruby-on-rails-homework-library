@@ -1,0 +1,28 @@
+<h2 class="mt-4">Create topic</h2>
+
+<%= form_with(model: @topic, local: true) do |form| %>
+  <% if @topic&.errors&.full_messages&.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% @topic .errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 mt-4 row">
+    <div class="col-sm-1 col-form-label">
+      <strong><%= form.label :title %></strong>
+    </div>
+
+    <div class="col-sm-9">
+      <%= form.text_field :title, autocomplete: "Title", class: 'form-control form-control-lg'  %>
+    </div>
+  </div>
+  <br>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-dark mb-3' %>
+  </div>
+<% end %>

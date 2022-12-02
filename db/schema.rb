@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_13_210640) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_173852) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,12 +42,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_210640) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "ready_for_order", null: false
+  end
+
+  create_table "books_topics", id: false, force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "topic_id", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -64,6 +75,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_210640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_orders_on_book_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,6 +2,7 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update update_status destroy]
+  before_action :set_topics, only: :create
 
   def index
     @books = Book.all
@@ -34,6 +35,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new book_params
     if @book.save
+      @book.topics << @topics
       redirect_to book_path(@book)
     else
       render :new
@@ -56,10 +58,18 @@ class BooksController < ApplicationController
   private
 
   def set_book
-    @book = Book.find params[:id]
+    @book = Book.find(params[:id])
   end
 
   def book_params
     params.require(:book).permit(:name, :author, :image, :status)
+  end
+
+  def topic_params
+    params.require(:book).permit(topic_ids: [])
+  end
+
+  def set_topics
+    @topics = Topic.where(id: topic_params[:topic_ids])
   end
 end

@@ -33,6 +33,7 @@ gem "jbuilder"
 gem "rubocop"
 gem "rubocop-rails"
 gem "rubocop-rspec"
+gem 'multi-select-rails'
 
 # Use Redis adapter to run Action Cable in production
 gem "bootstrap", "~> 5.1.3"
