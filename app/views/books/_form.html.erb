@@ -1,4 +1,4 @@
-<%= form_with(model: @book, local: true) do |form| %>
+<%= form_with(model: @book, local: true, url: books_path) do |form| %>
   <% if @book&.errors&.full_messages&.any? %>
     <div class="alert alert-danger">
       <ul class="mb-0">
@@ -31,21 +31,18 @@
   </div>
   <br>
 
-  <div class="mb-3 row">
-    <div class="col-sm-1 col-form-label">
-      <strong><%= form.label :topic_ids %></strong>
-    </div>
+<!--  <div class="mb-3 row">-->
+<!--    <div class="col-sm-1 col-form-label">-->
+<!--      <strong><%#= form.label :topic_ids %></strong>-->
+<!--    </div>-->
 
-    <div class="col-sm-9">
-      <%= form.collection_select :topic_ids, Topic.all, :id, :title, { include_blank: 'Not selected' }, {:multiple => true, class: 'form-control form-control'}  %>
-    </div>
-  </div>
-  <br>
+<!--    <div class="col-sm-9">-->
+      <%#= form.collection_select :topic_ids, Topic.all, :id, :title, { include_blank: 'Not selected' }, {:multiple => true, class: 'form-control form-control'}  %>
+<!--    </div>-->
+<!--  </div>-->
+<!--  <br>-->
 
   <div class="form-group">
-    <% if @book.image.attached? %>
-      <%= image_tag @book.image, style: "width: 200px; display: block " %>
-    <% end %>
     <div class="mb-3 row">
       <div class="col-sm-1 col-form-label">
         <strong><%= form.label :image %></strong>

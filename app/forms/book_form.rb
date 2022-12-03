@@ -2,28 +2,23 @@
 
 class BookForm
   include ActiveModel::Model
-  attr_accessor :name, :author, :topic_ids, :image
-
+  attr_accessor :name, :author, :image
+  # :topic_ids
   validates_presence_of :name, :author
 
-  # def save
-  #   new_book = Book.new(name: name, author: author, topic_ids: topic_ids, image: image)
-  #   AuthorForm.new(title: new_book.author).call
-  # end
+  def save
+    new_book = Book.create(name: name, author: author, image: image)
+    # , topic_ids: topic_ids
+    create_author(new_book) if new_book
+  end
 
   def self.model_name
     ActiveModel::Name.new(self, nil, 'BookForm')
   end
 
-  # def initialize(params = {})
-  #   @book = Book.new
-  #   super(params)
-  #   @terms_of_service ||= false
-  # end
-  #
-  # def submit
-  #   return false if invalid?
-  #   AuthorForm.new(title: @book.author).call
-  #   true
-  # end
+  private
+
+  def create_author(book)
+    AuthorForm.new(title: book.author).call
+  end
 end
