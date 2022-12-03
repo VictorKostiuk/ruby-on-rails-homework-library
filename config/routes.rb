@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   get '/search', to: 'books#search'
   get '/orders', to: 'books#orders'
+  get '/analytics', to: 'books#analytics'
   resources :topics
   resources :books do
     resources :comments

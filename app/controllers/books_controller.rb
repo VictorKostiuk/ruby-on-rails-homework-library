@@ -8,6 +8,9 @@ class BooksController < ApplicationController
     @books = Book.all
     @new = Book.newest
   end
+  def analytics
+    @books = Book.all
+  end
 
   def orders
     @books = Book.where(status: "ordered")
@@ -57,7 +60,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book_form).permit(:name, :author, :image, :status)
+    params.require(:book_form).permit(:name, :author, :image, :status, :description)
   end
 
   # def topic_params

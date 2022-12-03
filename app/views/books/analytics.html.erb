@@ -1,0 +1,7 @@
+<% @books.each do |book| %>
+  <% if book.description != nil %>
+    <div>
+      <p><b><%= book.name %>:</b> <%= PostAnalyticJob.perform_now(book.description) %></p>
+    </div>
+  <% end %>
+<% end %>
