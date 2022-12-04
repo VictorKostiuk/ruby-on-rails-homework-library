@@ -34,6 +34,8 @@ gem "rubocop"
 gem "rubocop-rails"
 gem "rubocop-rspec"
 gem 'multi-select-rails'
+gem 'delayed_job_active_record'
+gem 'whenever', require: false
 
 # Use Redis adapter to run Action Cable in production
 gem "bootstrap", "~> 5.1.3"

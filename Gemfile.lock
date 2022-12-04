@@ -91,6 +91,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (4.1.0)
+    chronic (0.10.2)
     coderay (1.1.3)
     concurrent-ruby (1.1.10)
     crack (0.4.5)
@@ -105,6 +106,11 @@ GEM
     debug (1.6.2)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
+    delayed_job (4.1.11)
+      activesupport (>= 3.0, < 8.0)
+    delayed_job_active_record (4.1.7)
+      activerecord (>= 3.0, < 8.0)
+      delayed_job (>= 3.0, < 5)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -324,6 +330,8 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.0)
@@ -340,6 +348,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   debug
+  delayed_job_active_record
   devise
   factory_bot
   faraday
@@ -367,6 +376,7 @@ DEPENDENCIES
   web-console
   webdrivers
   webmock
+  whenever
 
 RUBY VERSION
    ruby 3.0.1p64
