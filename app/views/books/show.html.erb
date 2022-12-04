@@ -36,5 +36,5 @@
 <% end %>
 
 <ul>
-  <%= render @book.comments %>
+  <%= render @book.comments.where(censored: true) %>
 </ul>
