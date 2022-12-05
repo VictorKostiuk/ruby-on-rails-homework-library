@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - "1.29.12"
+  - 3.0.1
 env:
   - DB=postgresql
 script:
