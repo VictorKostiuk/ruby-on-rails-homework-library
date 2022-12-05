@@ -1,6 +1,12 @@
 class CultureLockJob < ApplicationJob
   queue_as :default
-  SOME_WORDS = ['kurwa']
+
+  def perform(params)
+    sleep 10
+    params[:body].gsub('kurwa', 'awruk')
+    params[:censored] = true
+    params
+  end
   def perform(comment)
     text = comment.body
     new_text = text.split(' ').map do |word|
